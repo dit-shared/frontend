@@ -9,7 +9,7 @@ def buildJSONRespose(responseData):
 def auth(request):
 	if 'id' in request.session:
 		return HttpResponseRedirect('/account')
-	return render(request, 'Account/auth.html')
+	return render(request, 'Authorize/auth.html')
 
 def login(request):
 	response = {"success": False, }
