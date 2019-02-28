@@ -3,7 +3,8 @@
         {% load staticfiles %}
         <link rel = "stylesheet" href="{% static 'Account/style/main.css' %}">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
     </head>
     <body>
@@ -12,36 +13,57 @@
               <a href="#" class="brand-logo">Logo</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/auth/logout">Выйти</a></li>
+                <li><a href="#" data-target="slide-out" class="sidenav-trigger"> <i class="material-icons"></i>menu</i></a></li> 
               </ul>
             </div>
         </nav>     
+        <a href="#" data-target="slide-out" class="sidenav-trigger">
+                <i class="medium material-icons">menu</i>
+        </a>
+        <ul id="slide-out" class="sidenav">
+          <li><div class="user-view">
+            <div class="background">
+              <img src="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/Hnd01gaCiu89hpk4/videoblocks-transmitting-signals-to-the-neurons-active-neural-network-the-activity-of-blue-structures-that-transmit-signals-in-different-corners-of-the-screen-black-background-place-for-text-plexus_szwar989m_thumbnail-full01.png">
+            </div>
+            <a href="#user"><img class="circle" src="https://visualpharm.com/assets/387/Person-595b40b75ba036ed117da139.svg"></a>
+            <a href="#name"><span class="white-text name">Тестовый Пользователь</span></a>
+            <a href="#email"><span class="white-text email">test@test.test</span></a>
+          </div></li>
+          <li><a href="#!">Загрузить</a></li>
+          <li><a href="#!">Предсказать</a></li>
+          <li><a href="#!">Просмотреть</a></li>
+          <li><div class="divider"></div></li>
+          <!-- <li><a class="subheader">Другое</a></li> -->
+          <li><a class="waves-effect" href="#!">Статистика</a></li>
+        </ul>
+              
         
         <div class = "row">
             <div class = "col s12">
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>First</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Шестой снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Second</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Пятый снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Third</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Четвертый снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Third</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Третий снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Third</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Второй снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Third</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-header"><i class="material-icons">local_see</i>Первый снимок</div>
+                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
                     </li>
                 </ul>
                         
@@ -64,17 +86,29 @@
                     </div>
             </div>
         </div>
-
-        <!-- JAVASCRIPT -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
         
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var elems = document.querySelectorAll('.collapsible');
                 var instances = M.Collapsible.init(elems);
             });            
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+            });
+
+            // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+            // var collapsibleElem = document.querySelector('.collapsible');
+            // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+            // Or with jQuery
+
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+            });
         </script>
     </body>
 </html>
