@@ -8,107 +8,30 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
     </head>
     <body>
-        <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Logo</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/auth/logout">Выйти</a></li>
-                <li><a href="#" data-target="slide-out" class="sidenav-trigger"> <i class="material-icons"></i>menu</i></a></li> 
-              </ul>
-            </div>
-        </nav>     
-        <a href="#" data-target="slide-out" class="sidenav-trigger">
-                <i class="medium material-icons">menu</i>
-        </a>
-        <ul id="slide-out" class="sidenav">
-          <li><div class="user-view">
-            <div class="background">
-              <img src="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/Hnd01gaCiu89hpk4/videoblocks-transmitting-signals-to-the-neurons-active-neural-network-the-activity-of-blue-structures-that-transmit-signals-in-different-corners-of-the-screen-black-background-place-for-text-plexus_szwar989m_thumbnail-full01.png">
-            </div>
-            <a href="#user"><img class="circle" src="https://visualpharm.com/assets/387/Person-595b40b75ba036ed117da139.svg"></a>
-            <a href="#name"><span class="white-text name">Тестовый Пользователь</span></a>
-            <a href="#email"><span class="white-text email">test@test.test</span></a>
-          </div></li>
-          <li><a href="#!">Загрузить</a></li>
-          <li><a href="#!">Предсказать</a></li>
-          <li><a href="#!">Просмотреть</a></li>
-          <li><div class="divider"></div></li>
-          <!-- <li><a class="subheader">Другое</a></li> -->
-          <li><a class="waves-effect" href="#!">Статистика</a></li>
-        </ul>
-              
-        
-        <div class = "row">
-            <div class = "col s12">
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Шестой снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Пятый снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Четвертый снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Третий снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Второй снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">local_see</i>Первый снимок</div>
-                        <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                    </li>
-                </ul>
-                        
-                <div class = "row">
-                    <div class = "col s10">
-                        <form action="#">
-                            <div class="file-field input-field">
-                            <div class="btn">
-                                <span>File</span>
-                                <input type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                            </div>
-                        </form>
+        {% block topbar %} {% include 'Account/topbar.html' %} {% endblock %}
+        {% block sidebar %} {% include 'Account/sidebar.html' %} {% endblock %}
+
+        <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4">
+                    <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="https://visualpharm.com/assets/30/User-595b40b85ba036ed117da56f.svg">
+                        <span class="card-title" style="color:black;">Ваш профиль</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
                     </div>
-                    <div class = "col s2">
-                        <a class="waves-effect waves-light btn-large"><i class="material-icons right">cloud</i>upload</a>
+                    <div class="card-content">
+                        <p><b>Имя: </b> {{ user.name }}</p> 
+                        <p><b>Фамилия: </b> {{ user.surname }}</p>
+                        <p><b>Почта: </b> {{ user.mail }}</p>
                     </div>
-            </div>
+                    <div class="card-action">
+                        <a href="#">Написать в поддержку</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col s5"></div>
         </div>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.collapsible');
-                var instances = M.Collapsible.init(elems);
-            });            
-        </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.sidenav');
-                var instances = M.Sidenav.init(elems);
-            });
-
-            // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-            // var collapsibleElem = document.querySelector('.collapsible');
-            // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
-
-            // Or with jQuery
-
-            $(document).ready(function(){
-                $('.sidenav').sidenav();
-            });
-        </script>
     </body>
 </html>
