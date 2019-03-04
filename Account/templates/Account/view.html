@@ -14,30 +14,16 @@
         <center><h3> Просмотр снимков </h3></center>
 
         <ul class="collapsible">
+            {% for r in response %}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Шестой снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
+                    <div class="collapsible-header"><i class="material-icons">local_see</i> {{r.dirname}} </div>
+                    <div class="collapsible-body">
+                        <p><b>Слои:</b> {{ r.snapshots }}</p>
+                        <p><b>Размер исследования:</b> {{ r.weight }}</p>
+                        <img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" />
+                    </div>
                 </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Пятый снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Четвертый снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Третий снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Второй снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i>Первый снимок</div>
-                    <div class="collapsible-body"><img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" /></div>
-                </li>
+            {% endfor %}
         </ul>
 
         <script>
