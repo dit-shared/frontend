@@ -36,7 +36,7 @@ function sendPredictForm() {
                 if (!response["success"]) {
                     swal("Ошибка!", "Похоже на сервере возникла ошибка", "error");
                 } else {
-                    swal("Выполнено", "Предсказания посчитаны: " + response["message"], "success");
+                    swal("Выполнено", "Предсказания посчитаны. " + response["message"], "success");
                 }
             }),
         });

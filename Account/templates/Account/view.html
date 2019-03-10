@@ -16,10 +16,10 @@
         <ul class="collapsible">
             {% for r in response %}
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">local_see</i> {{r.dirname}} </div>
+			<div class="collapsible-header"><i class="material-icons">local_see</i><b>{{ r.index }}</b> {{r.dirname}} </div>
                     <div class="collapsible-body">
                         <p><b>Слои:</b> {{ r.snapshots }}</p>
-                        <p><b>Размер исследования:</b> {{ r.weight }}</p>
+                        <p><b>Размер исследования:</b> {{ r.weight }} Мб</p>
                         <img src = "https://rentgen.online/wp-content/uploads/2017/09/1-72-240x224.jpg" />
                     </div>
                 </li>
