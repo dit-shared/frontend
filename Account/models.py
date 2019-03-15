@@ -11,3 +11,15 @@ class User(models.Model):
     login = models.CharField(max_length=32)
     mail = models.EmailField(max_length=64)
     passwd = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.surname + ' ' + self.name + ' (' + self.login + ')'
+
+class Feedback(models.Model):
+    user_id = models.IntegerField(default=0)
+    title = models.CharField(max_length=32)
+    text = models.CharField(max_length=1024)
+    time = models.DateTimeField()
+
+    def __str__(self):
+        return self.title

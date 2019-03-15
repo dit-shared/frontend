@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import HashPassword, User
+from .models import HashPassword, User, Feedback
 from Frontend import settings
-import os, json, time, subprocess
+from Frontend.TelegramBot import send as telegram_send
+import os, json, time, subprocess, datetime
 
 def runCommand(commands):
     subprocess.run(commands)
@@ -30,7 +31,10 @@ def view(request):
     id = request.session['id']
     user = User.objects.filter(id=id)[0]
 
-    res_dir = "/root/common/npcmr/DICOM_FINAL/"
+    if settings.ON_SERVER:
+        res_dir = "/root/common/npcmr/DICOM_FINAL/"
+    else:
+        res_dir = settings.BASE_DIR + "/research/"
     files = os.listdir(res_dir)
     
     response = list()
@@ -67,3 +71,21 @@ def encPasswd(request):
     if 'passwd' not in request.GET:
         return HttpResponse("Incorrect GET request")
     return HttpResponse(HashPassword(request.GET['passwd']))
+
+def feedback(request):
+    if 'id' not in request.session:
+        return buildJSONRespose({"message": 'Error: you are not authorized', "success": True})
+    if 'title' not in request.POST or 'text' not in request.POST:
+        return buildJSONRespose({"message": 'Error: invalid request data', "success": True})
+    
+    feedback = Feedback.objects.create(user_id=request.session['id'], title=request.POST['title'],
+                text=request.POST['text'], time=datetime.datetime.now())
+    feedback.save()
+
+    if settings.TELEGRAM_FEEDBACK:
+        user = User.objects.filter(id=request.session['id'])[0]
+        telegram_msg = 'Title: ' + feedback.title + '\nText: ' + feedback.text + '\nFrom: ' + str(user)
+        telegram_send(settings.FeedbackTelegramChannelToken, settings.FeedbackTelegramChatId, telegram_msg)
+
+    return buildJSONRespose({"message": "", "success": True})
+

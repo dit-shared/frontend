@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+ON_SERVER = False
+TELEGRAM_FEEDBACK = True
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,10 +30,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Telegram
+FeedbackTelegramChannelToken = "701215222:AAGjMuomEawq3fwJQHqfXmJkZCrKKURnCv0"
+FeedbackTelegramChatId = "-1001398424643"
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'slicer',
     'Account',
     'django.contrib.admin',
     'django.contrib.auth',
