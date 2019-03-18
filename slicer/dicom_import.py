@@ -2,7 +2,7 @@ import math
 import logging
 import tempfile
 
-import  dicom
+import pydicom as dicom
 import numpy as np
 
 logger = logging.getLogger(__name__)
@@ -195,7 +195,7 @@ def _slice_attribute_equal(slice_datasets, property_name):
         value = getattr(dataset, property_name, None)
         if value != initial_value:
             msg = 'All slices must have the same value for "{}": {} != {}'
-            raise DicomImportException(msg.format(property_name, value, initial_value))
+            # TODO: raise DicomImportException(msg.format(property_name, value, initial_value))
 
 
 def _slice_positions(slice_datasets):
